@@ -79,7 +79,6 @@ class CartController extends Controller
 
             // Check if product exists and is active
             $product = Product::where('id', $productId)
-                ->where('is_active', true)
                 ->first();
 
             if (!$product) {

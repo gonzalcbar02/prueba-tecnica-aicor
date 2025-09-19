@@ -14,7 +14,6 @@ return new class extends Migration
             $table->string('order_number')->unique();
             $table->enum('status', ['pending', 'processing', 'completed', 'cancelled'])->default('pending');
             $table->decimal('total_amount', 10, 2);
-            $table->text('notes')->nullable();
             $table->timestamps();
 
             // Indexes for better performance

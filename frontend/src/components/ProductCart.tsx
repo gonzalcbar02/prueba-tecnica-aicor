@@ -5,7 +5,7 @@ import { ShoppingCart, Package, Plus, Minus, CheckCircle } from "lucide-react"
 const notFoundImage =
   "https://www.webempresa.com/foro/wp-content/uploads/wpforo/attachments/3200/318277=80538-Sin_imagen_disponible.jpg"
 
-export default function ProductCart({ product }: { product: Product }) {
+export default function ProductCart({ product }: {  product: Product }) {
   const [quantity, setQuantity] = useState(1)
   const [showNotification, setShowNotification] = useState(false)
   
@@ -17,20 +17,45 @@ export default function ProductCart({ product }: { product: Product }) {
     }
   }
 
-  const handleAddToCart = () => {
-    // Here you would typically add the product to your cart state/context
-    console.log(`Added ${quantity} x ${product.name} to cart`)
 
-    // Show notification
-    setShowNotification(true)
+  const handleAddToCart = async () => {
+  try {
+    const response = await fetch("http://localhost:8000/api/cart/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}` 
+      },
+      body: JSON.stringify({
+        product_id: product.id,
+        quantity: quantity,
+      }),
+    });
 
-    // Hide notification after 3 seconds
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error("Error al agregar al carrito:", data);
+      return;
+    }
+
+    console.log("Producto agregado:", data);
+
+    // Mostrar notificación de éxito
+    
+    setShowNotification(true);
     setTimeout(() => {
-      setShowNotification(false)
-    }, 3000)
-  }
-  
+      setShowNotification(false);
+    }, 3000);
 
+    setQuantity(1); // Reset quantity to 1 after adding to cart
+
+  } catch (error) {
+    console.error("Error en la petición:", error);
+  }
+};
+
+  
   return (
     <div
       key={product.id}
