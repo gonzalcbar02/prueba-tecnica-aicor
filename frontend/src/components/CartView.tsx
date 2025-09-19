@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react"
 import type { CartItem } from "../types/cart"
 import { Plus, Minus, Trash } from "lucide-react"
@@ -27,7 +25,7 @@ export function CartView({ item, onUpdate }: { item: CartItem; onUpdate: () => v
       })
       if (!response.ok) throw new Error("Error al actualizar cantidad")
       setQuantity(newQuantity)
-      onUpdate() // refrescar resumen o lista del carrito
+      onUpdate() 
     } catch (error) {
       console.error(error)
     } finally {

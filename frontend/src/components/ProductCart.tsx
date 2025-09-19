@@ -41,14 +41,13 @@ export default function ProductCart({ product }: {  product: Product }) {
 
     console.log("Producto agregado:", data);
 
-    // Mostrar notificación de éxito
     
     setShowNotification(true);
     setTimeout(() => {
       setShowNotification(false);
     }, 3000);
 
-    setQuantity(1); // Reset quantity to 1 after adding to cart
+    setQuantity(1); 
 
   } catch (error) {
     console.error("Error en la petición:", error);

@@ -7,17 +7,14 @@ export default function History() {
         const elements = document.querySelectorAll(".history");
         elements.forEach((el) => {
             const element = el as HTMLElement;
-            element.style.setProperty("color", "blue", "important"); // Les ponemos color azul
+            element.style.setProperty("color", "blue", "important"); 
         });
     }, []);
-
 
 
     return (
         <>
             < Header />
-
-
 
         </>
     )

@@ -10,7 +10,7 @@ export default function Navbar() {
   const handleLogout = async () => {
     const success = await logout()
     if (success) {
-      window.location.href = "/" // redirigir a home
+      window.location.href = "/" 
     }
   }
 
@@ -32,7 +32,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
+          
           <nav className="hidden md:flex items-center space-x-8">
             <Link
               to="/dashboard"
@@ -58,7 +58,7 @@ export default function Navbar() {
             </Link>
           </nav>
 
-          {/* Desktop Logout Button */}
+
           <div className="hidden md:flex items-center">
             <button
               onClick={handleLogout}
@@ -70,7 +70,6 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Mobile menu button */}
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
@@ -81,7 +80,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-slate-200 bg-white">
             <div className="px-2 pt-2 pb-3 space-y-1">

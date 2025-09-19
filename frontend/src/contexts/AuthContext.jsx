@@ -57,7 +57,6 @@ export const AuthProvider = ({ children }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // Enviamos el token actual en la cabecera Authorization
           "Authorization": `Bearer ${token}`,
         },
       })
@@ -65,7 +64,6 @@ export const AuthProvider = ({ children }) => {
       const data = await res.json()
 
       if (res.ok) {
-        // Limpiar state y localStorage
         setToken(null)
         setUser(null)
         localStorage.removeItem("token")

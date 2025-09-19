@@ -1,4 +1,3 @@
-"use client"
 
 import Header from "../components/Header"
 import { CartView } from "../components/CartView.tsx"
@@ -15,7 +14,7 @@ export default function Cart() {
     const elements = document.querySelectorAll(".cart")
     elements.forEach((el) => {
       const element = el as HTMLElement
-      element.style.setProperty("color", "blue", "important") // Les ponemos color azul
+      element.style.setProperty("color", "blue", "important") 
     })
   }, [])
 
@@ -47,7 +46,7 @@ export default function Cart() {
     setIsClearing(true)
     try {
       const response = await fetch("http://localhost:8000/api/cart/clear", {
-        method: "DELETE", // or POST depending on your backend route
+        method: "DELETE", 
         headers: {
           Authorization: `Bearer ${token}`,
           Accept: "application/json",
@@ -58,7 +57,6 @@ export default function Cart() {
       const result = await response.json()
 
       if (result.status === "success") {
-        // Clear the local state immediately
         setCarts([])
         console.log(`Successfully cleared ${result.data.deleted_items_count} items from cart`)
       } else {

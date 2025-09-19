@@ -9,20 +9,19 @@ export default function Dashboard() {
     const [, setLoading] = useState(true);
 
     useEffect(() => {
-        // Seleccionamos todos los elementos con la clase 'home'
         const elements = document.querySelectorAll(".home");
         elements.forEach((el) => {
             const element = el as HTMLElement;
-            element.style.setProperty("color", "blue", "important"); // Les ponemos color azul
+            element.style.setProperty("color", "blue", "important"); 
         });
     }, []);
 
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch("http://localhost:8000/api/products"); // Tu endpoint Laravel
+            const response = await fetch("http://localhost:8000/api/products"); 
             const data = await response.json();
-            setProducts(data); // data es un array de productos
+            setProducts(data); 
         } catch (error) {
             console.error("Error fetching products:", error);
         } finally {
